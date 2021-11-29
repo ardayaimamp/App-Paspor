@@ -1,0 +1,59 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+body{
+    margin:0;
+   padding:0;
+   height:100%;
+}
+.bg-nav{
+    background-color: #39A2DB;
+}
+
+.navbar-nav li {
+    padding-left: 15px;
+}
+
+.border-nav{
+    border-color:#DB7239!important;
+    border-radius: 55px;
+
+}
+
+/* Home Page */
+.bg-sec2{
+    background-color: #F4F4F4;
+}
+
+.footer-down{
+    background-color: #F4F4F4;
+}
+
+/* Login Page */
+.login-form{
+    margin-top: 10vh;
+}
+.form-floating input[type="email"],
+.form-floating input[type="password"]{
+    border-radius: 0;
+}
+
+.bg-login{
+    background-color: #DB7239;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+.text-login-form{
+    margin-top: 30%;
+}
+.btn-daftar{
+    font-weight: 500;
+    width: 75%;
+}
+
+@media screen and (max-width: 767px) {
+   div.big-paspor{
+        display: none;
+    }
+}
