@@ -10,9 +10,27 @@
                 <li><a class="nav-link active" href="#syarat">Syarat & Ketentuan</a></li>
                 <li> <a class="nav-link active" href="#kontak">Kontak Kami</a></li>
             </ul>
+            @auth
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Hi, {{ auth()->user()->name }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">Dashboard</a>
+                      <form action="/logout" method="post">
+                        @csrf
+                        <button class="dropdown-item" type="submit">Logout</button>
+                    </form>
+                    </div>
+                  </li>
+            </ul>
+
+            @else
             <ul class="navbar-nav ms-auto">
                 <li><a class="nav-link active" href="/login"><i class="bi bi-box-arrow-in-right"></i> Login</a></li>
             </ul>
+            @endauth
       </div>
     </div>
   </nav>
