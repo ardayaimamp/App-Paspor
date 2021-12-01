@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class DashboardController extends Controller
+class DashboardPemohonController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +14,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $getDate = Carbon::now();
-
-        return view('/dashboard/index',[
-            'title'=>'Dashboard',
-            'active'=>'dashboard',
-            'now' => Carbon::now()
+        return view('/dashboard/listPemohon/index',[
+            'active'=>'listPemohon',
+            'title'=>'List Pemohon',
+            'users'=>User::where('level',0)->get()
         ]);
     }
 
@@ -49,7 +45,7 @@ class DashboardController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -60,7 +56,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -72,7 +68,7 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -83,7 +79,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)

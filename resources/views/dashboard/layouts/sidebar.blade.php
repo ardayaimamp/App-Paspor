@@ -1,6 +1,6 @@
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="/img/logo-nav.png" class="img-fluid" width="40" height="40" alt="" srcset=""></a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="/img/logo-nav.png" class="img-fluid" width="40" height="40" alt="" srcset=""><b class="fw-normal">&nbsp;&nbsp;{{ auth()->user()->name }}</b></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,19 +27,19 @@
               </h6>
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
+              <a class="nav-link {{ $active === 'dashboard' ? 'active' : '' }}" aria-current="page" href="/dashboard">
                 <span data-feather="home"></span>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/dashboard/profil">
                 <span data-feather="shopping-cart"></span>
                 Profil
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/dashboard/pengajuan">
                 <span data-feather="users"></span>
                 Pengajuan
               </a>
@@ -52,13 +52,13 @@
           </h6>
           <ul class="nav flex-column mb-2">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link {{ $active === 'listPemohon' ? 'active' : '' }}" href="/dashboard/listPemohon">
                 <span data-feather="file-text"></span>
                 List Pemohon
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link {{ $active === 'dataAdmin' ? 'active' : '' }}" href="/dashboard/dataAdmin">
                 <span data-feather="file-text"></span>
                 Data Admin
               </a>

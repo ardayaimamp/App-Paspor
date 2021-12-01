@@ -38,20 +38,31 @@
                     </div>
                     @enderror
                   </div>
-                  <select class="form-select @error('jenis-kelamin') is-invalid @enderror" name="jenis-kelamin">
+                  <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
                     <option value="">Pilih Jenis Kelamin</option>
                     <option value="Laki-Laki">Laki-Laki</option>
                     <option value="Perempuan">Perempuan</option>
                   </select>
-                  @error('jenis-kelamin')
+                  @error('jenis_kelamin')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                     @enderror
                   <div class="my-3">
                       <label for="formFile" class="form-label">Foto KTP</label>
-                      <input class="form-control  @error('foto_ktp') is-invalid @enderror" value="{{ old('foto_ktp') }}" type="file" id="foto_ktp" name="foto_ktp">
+                      <img class="img-preview img-fluid mb-3 col-sm-5" >
+                      <input class="form-control  @error('foto_ktp') is-invalid @enderror" value="{{ old('foto_ktp') }}" type="file" id="foto_ktp" name="foto_ktp" onchange="previewImage()">
                       @error('foto_ktp')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                    </div>
+                  <div class="my-3">
+                      <label for="formFile" class="form-label">Foto Profil</label>
+                      <img class="img-preview-self img-fluid mb-3 col-sm-4 rounded-circle" >
+                      <input class="form-control  @error('foto_self') is-invalid @enderror" value="{{ old('foto_self') }}" type="file" id="foto_self" name="foto_self" onchange="previewImage2()">
+                      @error('foto_self')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -81,4 +92,32 @@
         </div>
     </div>
 </div>
+<script>
+      function previewImage(){
+        const image = document.querySelector('#foto_ktp');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent){
+            imgPreview.src = oFREvent.target.result;
+        }
+        }
+        function previewImage2(){
+        const image = document.querySelector('#foto_self');
+        const imgPreview = document.querySelector('.img-preview-self');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent){
+            imgPreview.src = oFREvent.target.result;
+        }
+        }
+</script>
 @endsection
