@@ -6,7 +6,7 @@
         <div class="col-md-7">
             <h1 class="display-3">Website Pendaftaran Paspor Hilang</h1>
             <p class="lead mt-4 fs-3">Pendaftaran Pengajuan tanpa antri <b>Walk-In</b></p>
-            <a href="" class="btn bg-nav fs-3 text-light px-5 fw-bold py-3">Lihat Caranya</a>
+            <a href="#syarat" class="btn bg-nav fs-3 text-light px-5 fw-bold py-3">Lihat Caranya</a>
         </div>
         <div class="col-md-5 big-paspor ">
         <img src="/img/paspor-big.png" class="img-fluid" alt="">
@@ -71,7 +71,11 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
               </div>
               <div class="mb-3 w-75">
-                <button type="submit" class="btn btn-light" onclick="alert('Pesan sudah dikirim!')">Kirim</button>
+                <button type="submit" class="btn btn-light" onclick="Swal.fire(
+                    'Berhasil!',
+                    'Pesan sudah terkirim!',
+                    'success'
+                  )">Kirim</button>
               </div>
         </div>
         <div class="col-md-6">
@@ -79,6 +83,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

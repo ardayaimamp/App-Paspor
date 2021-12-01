@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         User::create([
             'nik'=>'3213072012990007',
             'name' => 'Sahrul Ramdan',
+            'alamat' => 'Kp. Sembung 2 RT 07/04 Desa Gunung Sembung Kec. Pagaden, Kab. Subang ',
             'email' => 'sahrulramdan.75@gmail.com',
+            'jenis-kelamin'=>'Laki-Laki',
             'password' => bcrypt('qwopqwop'),
             'foto_ktp' => '/img/ktp.png',
             'level'=> true,
@@ -28,6 +30,8 @@ class DatabaseSeeder extends Seeder
             'nik'=>'3213072012990008',
             'name' => 'User 000',
             'email' => 'user@gmail.com',
+            'jenis-kelamin'=>'Perempuan',
+            'alamat' => 'Kp. Sembung 2 RT 07/04 Desa Gunung Sembung Kec. Pagaden, Kab. Subang ',
             'password' => bcrypt('qwopqwop'),
             'foto_ktp' => '/img/ktp.png',
         ]);

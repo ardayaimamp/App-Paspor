@@ -17,7 +17,7 @@
                       Hi, {{ auth()->user()->name }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Dashboard</a>
+                      <a class="dropdown-item" href="/dashboard">Dashboard</a>
                       <form action="/logout" method="post">
                         @csrf
                         <button class="dropdown-item" type="submit">Logout</button>

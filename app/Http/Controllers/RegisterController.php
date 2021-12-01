@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
-class DashboardController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-
-        $getDate = Carbon::now();
-
-        return view('/dashboard/index',[
-            'title'=>'Dashboard',
-            'now' => Carbon::now()
+        return view('register',[
+            'title' => 'Daftar'
         ]);
     }
 
@@ -42,13 +37,31 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name'=>'required|max:50|min:1',
+            'nik'=>'required|numeric|min:16|unique:users',
+            'alamat'=>'required',
+            'jenis-kelamin'=>'required',
+            'foto_ktp'=>'image|required|file',
+            'email'=> 'email:dns|required',
+            'password'=>'required'
+        ]);
+
+        if($request->file('foto_ktp')){
+            $validatedData['foto_ktp'] = $request->file('foto_ktp')->store('file_ktp');
+        }
+
+        $validatedData['password'] = bcrypt($validatedData['password']);
+
+        User::create($validatedData);
+
+        return redirect('/login')->with('success','Pendaftaran sudah dilakukan , saatnya Login');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -59,7 +72,7 @@ class DashboardController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -71,7 +84,7 @@ class DashboardController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
@@ -82,7 +95,7 @@ class DashboardController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Users  $users
+     * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
