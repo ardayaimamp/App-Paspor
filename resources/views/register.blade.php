@@ -21,7 +21,7 @@
                     @enderror
                   </div>
                   <div class="form-floating">
-                    <input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" id="nik" name="nik" placeholder="32xx">
+                    <input type="text" class="form-control @error('nik') is-invalid @enderror" value="{{ old('nik') }}" id="nik" name="nik" placeholder="32xxxxxxxxxxxxxx" maxlength="16">
                     <label for="floatingInput">NIK</label>
                     @error('nik')
                     <div class="invalid-feedback">

@@ -1,10 +1,15 @@
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="/img/logo-nav.png" class="img-fluid" width="40" height="40" alt="" srcset=""><b class="fw-normal">&nbsp;&nbsp;{{ auth()->user()->name }}</b></a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="/img/logo-nav.png" class="img-fluid" width="40" height="40" alt="" srcset=""><b class="fw-normal">&nbsp;&nbsp;@can('admin') Admin @endcan{{ auth()->user()->name }}</b></a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    @can('admin')
+    @if ($active == $sidebars)
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    @else
+    @endif
+    @endcan
     <div class="navbar-nav">
       <div class="nav-item text-nowrap">
         <form action="/logout" method="POST">
@@ -33,36 +38,40 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard/profil">
+              <a class="nav-link {{ $active === 'profil' ? 'active' : '' }}" href="/dashboard/profil">
                 <span data-feather="shopping-cart"></span>
                 Profil
               </a>
             </li>
+            @cannot('admin')
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard/pengajuan">
+              <a class="nav-link {{ $active === 'pengajuan' ? 'active' : '' }}" href="/dashboard/pengajuan">
                 <span data-feather="users"></span>
                 Pengajuan
               </a>
             </li>
-          <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-            <span>ADMINISTRATOR</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-              <span data-feather="plus-circle"></span>
-            </a>
-          </h6>
-          <ul class="nav flex-column mb-2">
-            <li class="nav-item">
+            @endcannot
+            @can('admin')
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span>ADMINISTRATOR</span>
+                <a class="link-secondary" href="#" aria-label="Add a new report">
+                    <span data-feather="plus-circle"></span>
+                </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+                <li class="nav-item">
               <a class="nav-link {{ $active === 'listPemohon' ? 'active' : '' }}" href="/dashboard/listPemohon">
                 <span data-feather="file-text"></span>
                 List Pemohon
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {{ $active === 'dataAdmin' ? 'active' : '' }}" href="/dashboard/dataAdmin">
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ $active === 'dataAdmin' ? 'active' : '' }}" href="/dashboard/dataAdmin">
                 <span data-feather="file-text"></span>
                 Data Admin
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+            </a>
+        </li>
+    </ul>
+    @endcan
+</div>
+</nav>

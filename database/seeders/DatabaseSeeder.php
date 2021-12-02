@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'sahrulramdan.75@gmail.com',
             'jenis_kelamin'=>'Laki-Laki',
             'password' => bcrypt('qwopqwop'),
-            'foto_ktp' => '/img/ktp.png',
-            'foto_self' => '/img/self.jpg',
+            'foto_ktp' => 'file_ktp/ktp.png',
+            'foto_self' => 'file_selfie/self.jpg',
             'level'=> true,
         ]);
         User::create([
@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'jenis_kelamin'=>'Perempuan',
             'alamat' => 'Kp. Sembung 2 RT 07/04 Desa Gunung Sembung Kec. Pagaden, Kab. Subang ',
             'password' => bcrypt('qwopqwop'),
-            'foto_ktp' => '/img/ktp.png',
+            'foto_ktp' => 'file_ktp/ktp.png',
         ]);
     }
 }

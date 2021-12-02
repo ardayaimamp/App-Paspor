@@ -15,7 +15,9 @@ class AddPhotosToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('foto_ktp')->nullable();
-            $table->string('foto_self')->nullable()->default('/img/default_user.png');
+            $table->string('foto_self')->nullable()->default('file_/default_user.png');
+            $table->string('akta_kelahiran')->nullable();
+            $table->string('kartu_keluarga')->nullable();
         });
     }
 

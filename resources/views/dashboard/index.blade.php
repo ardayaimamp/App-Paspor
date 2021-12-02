@@ -18,26 +18,42 @@
                     </h5>
                   </div>
                   <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td><button class="btn bg-nav" onclick="deleteConfirm()">Delete</button></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                    </div>
+                     <div class="card-body">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Foto</th>
+                <th scope="col">NIK</th>
+                <th scope="col">Nama</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Jenis Kelamin</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><img src="/storage/{{ $users->foto_self }}" width="50" height="50" style="border-radius:50%" alt="" srcset=""></td>
+                    <td>{{ $users->nik }}</td>
+                    <td>{{ $users->name }}</td>
+                    <td>{{ $users->alamat }}</td>
+                    <td>{{ $users->jenis_kelamin }}</td>
+                    <td>{{ $users->email }}</td>
+                    <td><button class="btn btn-primary" onclick=" Swal.fire({
+                        title: 'Foto KTP {{ $users->name }}',
+                        imageUrl: '/storage/{{ $users->foto_ktp }}',
+                        imageHeight: 600,
+                        imageWidth: 400,
+                        imageAlt: 'A tall image',
+                                  })"><i class="bi bi-x-circle"></i></button></td>
+                    <td><a class="btn btn-info text-light"><i class="bi bi-pencil-square"></i></a></td>
+                    <td><button class="btn btn-danger" onclick="deleteConfirm()"><i class="bi bi-x-circle"></i></button></td>
+                </tr>
+            </tbody>
+          </table>
+    </div>
                   </div>
                 </div>
                </div>
