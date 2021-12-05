@@ -59,11 +59,13 @@
                         <input type="hidden" name="oldImage4" value="{{ auth()->user()->foto_self }}">
                         <input type="file" class="form-control" id="foto_self" name="foto_self" onchange="previewImage4()">
                     </div>
+                    @cannot('admin')
                     <div class="mb-3">
                         <div class="row justify-content-center">
                             <img src="/storage/{{ auth()->user()->foto_ktp }}" class="img-fluid img-preview" style="width: 200px">
                             <label for="" class="d-block text-center">Foto KTP</label>
                         </div>
+
                         <label for="alamat" class="form-label">Foto KTP</label>
                         <input type="hidden" name="oldImage" value="{{ auth()->user()->foto_ktp }}">
                         <input type="file" class="form-control" id="foto_ktp" name="foto_ktp" onchange="previewImage()">
@@ -85,9 +87,10 @@
                         <input type="hidden" name="oldImage2" value="{{ auth()->user()->kartu_keluarga }}">
                         <label for="alamat" class="form-label">Foto Kartu Keluarga</label>
                         <input type="file" class="form-control" id="kartu_keluarga" name="kartu_keluarga" onchange="previewImage2()">
+                        @endcannot
                     </form>
+                </div>
             </div>
-          </div>
       </div>
     </main>
     <script>

@@ -16,11 +16,17 @@
         @else
         <img src="/img/user.png" alt="" class="img-thumbnail rounded-circle" style="width: 10%" srcset="">
         @endif
+        @can('admin')
+        <div class="role d-flex justify-content-center">
+            <p class="badge bg-warning text-center text-dark mt-1" style="max-width:50px; max-height:20px">Admin</p>
+        </div>
+        @endcan
         <h3 class="display-5 text-center">{{ auth()->user()->name }}</h3>
         <small class="text-muted text-center fs-5 mb-1">{{ auth()->user()->nik }}</small>
         <p class="lead text-center" style="margin-bottom: -2px">{{ $tgl_lahir }}</p>
         <p class="lead text-center">{{ auth()->user()->alamat }}</p>
     </div>
+    @cannot('admin')
     <div class="row justify-content-center mt-3">
         <div class="col-md-4">
             <h5 class="text-center">KTP</h5>
@@ -50,5 +56,7 @@
             @endif
         </div>
     </div>
+
+    @endcannot
   </main>
 @endsection

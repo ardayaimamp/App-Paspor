@@ -3,7 +3,7 @@
 @section('container')
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Hi, {{ auth()->user()->name }}</h1>
+        <h1 class="h2">Hi, @can('admin') <b>Admin</b> @endcan {{ auth()->user()->name }}</h1>
     </div>
     <p class="lead">Inilah sekilas di tanggal {{ $now->format('d F Y') }}</p>
     <div class="row mt-5">
@@ -208,9 +208,7 @@
             @endcan
                   @can('admin')
                   @if ($hitungBaris)
-                  @error('shift_id')
-<h1>{{ $message }}</h1>
-                  @enderror
+
                   <div id="accordion">
                     <div class="card">
                       <div class="card-header" id="headingOne">
@@ -220,7 +218,7 @@
                           </button>
                         </h5>
                       </div>
-                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                          <div class="card-body">
             <table class="table">
                 <thead>
@@ -288,12 +286,15 @@
                         <form action="/dashboard/tolak-pengajuan/{{ $p->id }}" method="POST">
                             @csrf
                             @method('put')
-                            <td><button class="btn btn-danger" type="submit"><i class="bi bi-x-circle"></i></button></td>
+                            <td><button class="btn btn-danger" type="submit" onclick="confirm('Apakah anda yakin ?')"><i class="bi bi-x-circle"></i></button></td>
                           </form>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+            @error('shift_id')
+<p class="text-center text-danger">{{ $message }}</p>
+                  @enderror
         </div>
                       </div>
                 </div>
@@ -302,10 +303,12 @@
 
                @endif
                @if ($adminTerima)
+               @if (!$hitungBaris)
                <div class="d-flex flex-column justify-content-center align-items-center quote_tengah">
                 <h1 class="display-5">Hari ini tidak ada pengajuan yang harus di konfirmasi &#128526;</h1>
                 <p class="lead fs-3">Bring you coffee, keep focus on your work!</p>
             </div>
+               @endif
                <div id="accordion">
                    <div class="card">
                      <div class="card-header" id="headingOne">
@@ -366,14 +369,14 @@
                @if ($adminTolak)
                <div id="accordion">
                    <div class="card">
-                     <div class="card-header" id="headingOne">
+                     <div class="card-header" id="headingFive">
                        <h5 class="mb-0">
-                         <button class="btn btn-nav text-decoration-none" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                         <button class="btn btn-nav text-decoration-none" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                            <h3 class="heading-3">Anda memiliki {{ $adminTolak_count }} pengajuan yang ditolak</h3>
                          </button>
                        </h5>
                      </div>
-                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                     <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
                         <div class="card-body">
            <table class="table" style="color:red; font-style:italic;">
                <thead>
