@@ -16,11 +16,7 @@ body{
     padding-left: 15px;
 }
 
-.border-nav{
-    border-color:#DB7239!important;
-    border-radius: 55px;
 
-}
 
 /* Home Page */
 .bg-sec2{
@@ -59,13 +55,24 @@ body{
     border-radius: 0;
 }
 
+.border-nav{
+    border-color:#DB7239!important;
+    border-radius: 55px;
+
+}
+.formLogin input[type="text"],
+.formLogin input[type="date"],
+.formLogin input[type="password"],
+.formLogin select{
+    margin-top:20px
+}
 .bg-login{
     background-color: #DB7239;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
 }
 .text-login-form{
-    margin-top: 30%;
+    margin-top: 40%;
 }
 .btn-daftar{
     font-weight: 500;
@@ -77,10 +84,20 @@ body{
         display: none;
     }
     .btn{
-
+        margin-bottom: 10%;
     }
 }
 /* Register Page */
 .img-register{
     margin: auto;
+}
+
+@media (max-width:766px){
+    .bg-login{
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 50px;
+    }
+    .text-login-form{
+        margin-top: 20%;
+    }
 }

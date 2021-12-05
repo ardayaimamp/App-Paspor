@@ -1,7 +1,7 @@
 
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
     <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"><img src="/img/logo-nav.png" class="img-fluid" width="40" height="40" alt="" srcset=""><b class="fw-normal">&nbsp;&nbsp;@can('admin') Admin @endcan{{ auth()->user()->name }}</b></a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     @can('admin')
@@ -14,7 +14,7 @@
       <div class="nav-item text-nowrap">
         <form action="/logout" method="POST">
             @csrf
-            <button type="submit" class="nav-link px-3 bg-dark border-0">Sign out</button>
+            <button type="submit" class="logout nav-link px-3 bg-dark border-0 ">Sign out</button>
         </form>
       </div>
     </div>
@@ -63,12 +63,6 @@
               <a class="nav-link {{ $active === 'listPemohon' ? 'active' : '' }}" href="/dashboard/listPemohon">
                 <span data-feather="file-text"></span>
                 List Pemohon
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {{ $active === 'dataAdmin' ? 'active' : '' }}" href="/dashboard/dataAdmin">
-                <span data-feather="file-text"></span>
-                Data Admin
             </a>
         </li>
     </ul>

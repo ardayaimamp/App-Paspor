@@ -19,7 +19,7 @@
           <a href="/">
             <img src="/img/logo-nav.png" width="75" height="75" class="img-fluid" alt="">
         </a>
-        <span class="text-muted">&nbsp;&copy; 2021 Dirjen Imigrasi</span>
+        <span class="text-muted">&nbsp;&copy; 2021 NyxSR </span>
       </div>
 
       <ul class="nav col-md-3 flex-row justify-content-end list-unstyled d-flex">

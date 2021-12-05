@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <main class="form-signin">
-                <form method="post" action="/register" enctype="multipart/form-data">
+                <form method="post" action="/register" enctype="multipart/form-data" class="formLogin">
                     @csrf
                   <h1 class="display-5 fs-2 text-center my-3 fw-normal">Silahkan isi Form Berikut</h1>
                   <div class="form-floating">
@@ -38,26 +38,28 @@
                     </div>
                     @enderror
                   </div>
-                  <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="Laki-Laki">Laki-Laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                  </select>
-                  @error('jenis_kelamin')
+                  <div class="form-floating">
+                    <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}" id="tanggal_lahir" name="tanggal_lahir" placeholder="Jl.xxx">
+                    <label for="floatingInput">Alamat</label>
+                    @error('tanggal_lahir')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
                     @enderror
-                  <div class="my-3">
-                      <label for="formFile" class="form-label">Foto KTP</label>
-                      <img class="img-preview img-fluid mb-3 col-sm-5" >
-                      <input class="form-control  @error('foto_ktp') is-invalid @enderror" value="{{ old('foto_ktp') }}" type="file" id="foto_ktp" name="foto_ktp" onchange="previewImage()">
-                      @error('foto_ktp')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                    </div>
+                  </div>
+                  <div class="form-floating">
+                      <select class="form-select @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
+                        <option value="" selected disabled>Pilih Jenis Kelamin</option>
+                        <option value="Laki-Laki">Laki-Laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                      </select>
+                      <label for="floatingInput">Jenis Kelamin</label>
+                      @error('jenis_kelamin')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                  </div>
                   <div class="my-3">
                       <label for="formFile" class="form-label">Foto Profil</label>
                       <img class="img-preview-self img-fluid mb-3 col-sm-4 rounded-circle" >

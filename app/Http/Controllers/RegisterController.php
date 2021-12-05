@@ -42,15 +42,12 @@ class RegisterController extends Controller
             'nik'=>'required|numeric|min:16|unique:users',
             'alamat'=>'required',
             'jenis_kelamin'=>'required',
-            'foto_ktp'=>'image|required|file',
+            'tanggal_lahir'=>'required|date',
             'foto_self'=>'image|file',
             'email'=> 'email:dns|required',
             'password'=>'required'
         ]);
 
-        if($request->file('foto_ktp')){
-            $validatedData['foto_ktp'] = $request->file('foto_ktp')->store('file_ktp');
-        }
         if($request->file('foto_self')){
             $validatedData['foto_self'] = $request->file('foto_self')->store('file_selfie');
         }

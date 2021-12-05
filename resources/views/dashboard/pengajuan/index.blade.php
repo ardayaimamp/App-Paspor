@@ -6,21 +6,42 @@
         <h1 class="h2">Pengajuan</h1>
       </div>
       <div class="col-md-6">
-          <form>
+          <form method="post" action="/dashboard/pengajuan" enctype="multipart/form-data">
+            @csrf
             <div class="mb-3">
               <label for="tanggal_pengajuan" class="form-label">Tanggal Pengajuan</label>
-              <input type="date" class="form-control" id="tanggal_pengajuan" name="tanggal_pengajuan">
+              <input type="date" class="form-control @error('tanggal_pengajuan') is-invalid @enderror" id="tanggal_pengajuan" name="tanggal_pengajuan" min="{{ $now->format('Y-m-d') }}">
             </div>
+            @error('tanggal_pengajuan')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
             <div class="mb-3">
               <label for="pemohon" class="form-label">Pemohon</label>
-              <input type="text" class="form-control" id="pemohon" name="pemohon" value={{ auth()->user()->name }} disabled>
+              <input type="text" class="form-control" value={{ auth()->user()->name }} disabled>
             </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Foto Surat Kehilangan</label>
+                <input class="form-control  @error('surat_kehilangan') is-invalid @enderror" type="file" id="surat_kehilangan" name="surat_kehilangan">
+              </div>
+              @error('surat_kehilangan')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+              @enderror
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Berikan deskripsi kehilangan..." id="deskripsi" name="deskripsi" style="height: 100px"></textarea>
+                <textarea class="form-control  @error('deskripsi') is-invalid @enderror" placeholder="Berikan deskripsi kehilangan..." id="deskripsi" name="deskripsi" style="height: 100px"></textarea>
                 <label for="deskripsi">Deskripsi</label>
+                @error('deskripsi')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
               </div>
             <button type="submit" class="btn btn-primary mt-3">Submit</button>
           </form>
       </div>
     </main>
+
 @endsection

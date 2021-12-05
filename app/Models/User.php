@@ -21,6 +21,11 @@ class User extends Authenticatable
         'id'
     ]);
 
+    public function pengajuan()
+    {
+        return $this->hasMany(Pengajuan::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

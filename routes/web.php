@@ -32,8 +32,12 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
+Route::resource('/dashboard', DashboardController::class)->only('index', 'update')->middleware('auth');
+Route::put('/dashboard/tolak-pengajuan/{id_pengajuan}', [DashboardController::class,'tolak']);
+//Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+//Route::put('/dashboard/{pengajuan:id}', [DashboardController::class,'update'])->middleware('auth');
+Route::get('/dashboard/listPemohon/{user:id}', [DashboardPemohonController::class, 'show'])->middleware('auth');
 Route::resource('/dashboard/profil', DashboardProfilController::class)->middleware('auth');
-Route::get('/dashboard/pengajuan', [DashboardPengajuanController::class,'index'])->middleware('auth');
+Route::resource('/dashboard/pengajuan', DashboardPengajuanController::class)->middleware('auth');
 Route::resource('/dashboard/listPemohon', DashboardPemohonController::class)->middleware('admin');
 Route::resource('/dashboard/dataAdmin', DashboardAdminController::class)->middleware('admin');

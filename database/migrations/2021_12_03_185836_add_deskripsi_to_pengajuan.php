@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShiftTable extends Migration
+class AddDeskripsiToPengajuan extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateShiftTable extends Migration
      */
     public function up()
     {
-        Schema::create('shift', function (Blueprint $table) {
-            $table->id();
-            $table->integer('shift')->nullable();
-            $table->time('jam_masuk')->nullable();
-            $table->time('jam_keluar')->nullable();
-            $table->timestamps();
+        Schema::table('pengajuan', function (Blueprint $table) {
+            $table->string('deskripsi');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateShiftTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shift');
+        Schema::table('pengajuan', function (Blueprint $table) {
+            $table->dropColumn('deskripsi');
+        });
     }
 }

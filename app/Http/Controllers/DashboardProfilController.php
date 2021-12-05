@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,10 +16,14 @@ class DashboardProfilController extends Controller
      */
     public function index()
     {
+        $tgl_lahir = auth()->user()->tanggal_lahir;
+        $newTgl_lahir = Carbon::parse($tgl_lahir)->format('d F Y');
+
         return view('dashboard.profil.view',[
             'active'=>'profil',
             'title'=>'Profil',
-            'sidebars' => ['listPemohon','dataAdmin']
+            'sidebars' => ['listPemohon','dataAdmin'],
+            'tgl_lahir'=> $newTgl_lahir
         ]);
     }
 
@@ -62,10 +67,12 @@ class DashboardProfilController extends Controller
      */
     public function edit(User $user)
     {
+
+
         return view('dashboard.profil.index',[
             'active'=>'profil',
             'title'=>'Profil',
-            'sidebars' => ['listPemohon','dataAdmin']
+            'sidebars' => ['listPemohon','dataAdmin'],
         ]);
     }
 
@@ -83,9 +90,11 @@ class DashboardProfilController extends Controller
             'alamat'=>'required',
             'jenis_kelamin'=>'required',
             'foto_ktp'=>'image|file',
+            'foto_self'=>'image|file',
             'kartu_keluarga'=>'image|file',
             'akta_kelahiran'=>'image|file',
             'email'=> 'email:dns|required',
+            'tanggal_lahir'=> 'required|date',
         ];
 
         if($request->nik != $profil->nik){
@@ -104,6 +113,12 @@ class DashboardProfilController extends Controller
                 Storage::delete($request->oldImage2);
             }
             $validatedData['kartu_keluarga'] = $request->file('kartu_keluarga')->store('file_kk');
+        }
+        if($request->file('foto_self')){
+            if($request->oldImage4){
+                Storage::delete($request->oldImage4);
+            }
+            $validatedData['foto_self'] = $request->file('foto_self')->store('file_selfie');
         }
         if($request->file('akta_kelahiran')){
             if($request->oldImage3){

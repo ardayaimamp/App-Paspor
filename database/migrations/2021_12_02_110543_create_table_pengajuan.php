@@ -21,8 +21,9 @@ class CreateTablePengajuan extends Migration
             $table->enum('status',['pending','diterima','ditolak','selesai']);
             $table->date('tanggal_pengajuan');
             $table->string('surat_kehilangan')->nullable();
-            $table->foreign('pemohon_id')->references('id')->on('users');
+            $table->foreign('pemohon_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('shift_id')->references('id')->on('shift');
+
         });
     }
 

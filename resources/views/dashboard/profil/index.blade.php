@@ -20,8 +20,12 @@
                   <input type="text" class="form-control" id="nik" name="nik" value="{{ auth()->user()->nik }}">
                 </div>
                 <div class="mb-3">
-                  <label for="name" class="form-label">Nama</label>
-                  <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}">
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ auth()->user()->name }}">
+                </div>
+                <div class="mb-3">
+                  <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                  <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}">
                 </div>
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
@@ -41,11 +45,20 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat" class="form-label">Email</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control w-50" id="email" name="email" value="{{ auth()->user()->email }}">
                       </div>
                 </div>
                 <div class="col-md-4">
+                    <div class="mb-3">
+                        <div class="row justify-content-center">
+                            <img src="/storage/{{ auth()->user()->foto_self }}" class="img-fluid img-preview-self" style="width: 200px">
+                            <label for="" class="d-block text-center">Foto Profil</label>
+                        </div>
+                        <label for="alamat" class="form-label">Foto Profil</label>
+                        <input type="hidden" name="oldImage4" value="{{ auth()->user()->foto_self }}">
+                        <input type="file" class="form-control" id="foto_self" name="foto_self" onchange="previewImage4()">
+                    </div>
                     <div class="mb-3">
                         <div class="row justify-content-center">
                             <img src="/storage/{{ auth()->user()->foto_ktp }}" class="img-fluid img-preview" style="width: 200px">
@@ -107,6 +120,19 @@
           function previewImage3(){
           const image = document.querySelector('#akta_kelahiran');
           const imgPreview = document.querySelector('.img-preview-ak');
+
+          imgPreview.style.display = 'block';
+
+          const oFReader = new FileReader();
+          oFReader.readAsDataURL(image.files[0]);
+
+          oFReader.onload = function(oFREvent){
+              imgPreview.src = oFREvent.target.result;
+          }
+          }
+          function previewImage4(){
+          const image = document.querySelector('#foto_self');
+          const imgPreview = document.querySelector('.img-preview-self');
 
           imgPreview.style.display = 'block';
 

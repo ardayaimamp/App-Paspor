@@ -26,7 +26,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
-        return back()->with('toast_error','Login Gagal');
+        return back()->with('toast_error','Email atau Password anda salah!');
     }
     public function logout(Request $request)
     {

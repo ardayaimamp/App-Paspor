@@ -1,3 +1,6 @@
+*{
+    animation: all 1s ease-in-out;
+}
 body {
   font-size: .875rem;
 }
@@ -98,3 +101,33 @@ body {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+.quote_tengah{
+    margin: 0 5% 5% 0;
+}
+
+@media (max-width: 740px){
+    .quote_tengah{
+        margin-left: 5%;
+    }
+    button.logout.nav-link.px-3.bg-dark.border-0{
+        position:absolute;
+        top:20%;
+        left:39%;
+    }
+}
+@media (max-width: 620px){
+    button.logout.nav-link.px-3.bg-dark.border-0{
+        position:absolute;
+        top:20%;
+        left:40%;
+    }
+}
+@media (max-width: 394px){
+    button.logout.nav-link.px-3.bg-dark.border-0{
+        position:absolute;
+        top:100%;
+        left:70%;
+        width: 30%;
+    }
+}
+
