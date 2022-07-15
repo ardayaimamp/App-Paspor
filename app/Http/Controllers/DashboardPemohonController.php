@@ -94,6 +94,7 @@ class DashboardPemohonController extends Controller
             'jenis_kelamin'=>'required',
             'foto_ktp'=>'image|file',
             'foto_self'=>'image|file',
+            'tanggal_lahir' => 'date|required',
             'email'=> 'email:dns|required',
         ];
 

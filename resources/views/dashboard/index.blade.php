@@ -220,6 +220,7 @@
                       </div>
                       <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
                          <div class="card-body">
+                             <div class="table-responsive-md">
             <table class="table">
                 <thead>
                   <tr>
@@ -228,6 +229,7 @@
                     <th scope="col">NIK</th>
                     <th scope="col">Nama</th>
                     <th scope="col">Alamat</th>
+                    <th scope="col">Tanggal Pengajuan</th>
                     <th scope="col">Deskripsi Kehilangan</th>
                     <th scope="col">Dokumen Pendukung</th>
                     <th scope="col">Action</th>
@@ -245,6 +247,7 @@
                         <td>{{ $p->pemohon->nik}}</td>
                         <td>{{ $p->pemohon->name}}</td>
                         <td>{{ $p->pemohon->alamat}}</td>
+                        <td>{{ date('d F Y', strtotime($p->tanggal_pengajuan)); }}</td>
                         <td>{{ $p->deskripsi}}</td>
                         <td><details>
                             <summary class="summary">Lihat Data</summary>
@@ -292,6 +295,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
             @error('shift_id')
 <p class="text-center text-danger">{{ $message }}</p>
                   @enderror
@@ -299,8 +303,6 @@
                       </div>
                 </div>
                </div>
-
-
                @endif
                @if ($adminTerima)
                @if (!$hitungBaris)
@@ -314,12 +316,31 @@
                      <div class="card-header" id="headingOne">
                        <h5 class="mb-0">
                          <button class="btn btn-nav text-decoration-none" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                           <h3 class="heading-3">Anda memiliki {{ $adminTerima_count }} pengajuan yang diterima</h3>
+                           <h3 class="heading-3">Anda memiliki {{ $adminTerima_count }} pengajuan yang diterima </h3>
                          </button>
                        </h5>
                      </div>
-                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                     <div id="collapseThree" class="collapse @if($adminTerima_search) show @endif" aria-labelledby="headingThree" data-parent="#accordion">
                         <div class="card-body">
+                            <div class="sort-date">
+                                <form action="/dashboard">
+
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label">Tanggal Pengajuan</label>
+                                        <input type="date" class="form-control" id="tanggal_pengajuan" name="tanggal_pengajuan" value="{{ request('tanggal_pengajuan') }}">
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-6">
+                                            <button type="submit" class="btn btn-primary"><i class="bi bi-search"></i>&nbsp;Cari</button>
+                                        </div>
+                                    </form>
+                                        <div class="col-md-6">
+                                            <a href="/dashboard" class="btn btn-danger"><i class="bi bi-x-circle"></i>&nbsp;Reset</a>
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <div class="table-responsive-md">
            <table class="table" style="color:green; font-style:italic;">
                <thead>
                  <tr>
@@ -330,7 +351,7 @@
                    <th scope="col">Alamat</th>
                    <th scope="col">Tanggal Pengajuan</th>
                    <th scope="col">Deskripsi Kehilangan</th>
-                   <th scope="col">Tiket Antri</th>
+                   <th scope="col">Shift</th>
                    <th scope="col" style="text-transform:uppercase">Status</th>
                  </tr>
                </thead>
@@ -344,23 +365,14 @@
                        <td>{{ $p->pemohon->alamat}}</td>
                        <td>{{ date('d F Y', strtotime($p->tanggal_pengajuan)); }}</td>
                        <td>{{ $p->deskripsi}}</td>
-                       <td><details>
-                           <summary class="summary">Lihat Data</summary>
-                           <div class="card text-white bg-info mb-3 text-center" style="max-width: 18rem;">
-                               <div class="card-header">Tiket Antrian</div>
-                               <div class="card-body">
-                                   <p class="">Tiket ini diberikan kepada</p>
-                                 <h4 class="card-title">{{ $p->pemohon->name }}</h4>
-                                 <p class="card-text">Silahkan anda datang pada tanggal {{ date('d F Y', strtotime($p->tanggal_pengajuan)); }} <br> <b>Shift {{ $p->shift->shift }}</b></p>
-                                 <small>{{ $p->shift->jam_masuk }} -> {{ $p->shift->jam_keluar }}</small>
-                               </div>
-                             </div>
-                         </details></td>
+                       <td>Shift {{ $p->shift_id }}</td>
                          <td>{{ $p->status}}</td>
                    </tr>
                    @endforeach
                </tbody>
            </table>
+
+        </div>
        </div>
                      </div>
                </div>

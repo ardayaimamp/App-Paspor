@@ -12,7 +12,7 @@
     </div>
     <div class="row justify-content-center" style="margin-top: 4vh">
         @if (auth()->user()->foto_self)
-        <img src="/storage/{{ auth()->user()->foto_self }}" alt="" class="img-thumbnail rounded-circle" style="width: 10%" srcset="">
+        <img src="/storage/{{ auth()->user()->foto_self }}" alt="" class="img-thumbnail rounded-circle" style="width: 200px; height:200px; overflow:hidden" srcset="">
         @else
         <img src="/img/user.png" alt="" class="img-thumbnail rounded-circle" style="width: 10%" srcset="">
         @endif
@@ -32,7 +32,7 @@
             <h5 class="text-center">KTP</h5>
             @if (is_null(auth()->user()->foto_ktp))
             <h1 class="display-h2 text-center mt-5">KTP Kosong</h1>
-            <span class="d-block text-center" style='font-size:100px;'>&#129316;</span>
+            <span class="d-block text-center" style='font-size:100px;'>&#128683;</span>
             @else
             <img src="/storage/{{ auth()->user()->foto_ktp }}" style="width: 500px" alt="" srcset="">
             @endif
@@ -41,7 +41,7 @@
             <h5 class="text-center">Kartu Keluarga</h5>
             @if (is_null(auth()->user()->kartu_keluarga))
             <h1 class="display-h2 text-center mt-5">KK Kosong</h1>
-            <span class="d-block text-center" style='font-size:100px;'>&#129316;</span>
+            <span class="d-block text-center" style='font-size:100px;'>&#128683;</span>
             @else
             <img src="/storage/{{ auth()->user()->kartu_keluarga }}" style="width: 500px" alt="" srcset="">
             @endif
@@ -50,7 +50,7 @@
             <h5 class="text-center">Akta Kelahiran</h5>
             @if (is_null(auth()->user()->akta_kelahiran))
             <h1 class="display-h2 text-center mt-5">Akta Kosong</h1>
-            <span class="d-block text-center" style='font-size:100px;'>&#129316;</span>
+            <span class="d-block text-center" style='font-size:100px;'>&#128683;</span>
             @else
             <img src="/storage/{{ auth()->user()->akta_kelahiran }}" style="width: 500px" alt="" srcset="">
             @endif

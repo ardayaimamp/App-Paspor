@@ -15,26 +15,34 @@
 </div>
 <div class="container-fluid bg-sec2 pb-5">
     <div class="row mt-5 mb-4">
-        <h1 class="display-5 fs-2 text-center pt-5">Kenapa Harus Pakai Website ini ?</h1>
+        <h1 class="display-5 fs-2 text-center pt-5 fw-bold">Kenapa Harus Pakai Website ini ?</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-3 d-flex flex-column align-items-center">
-            <div style="width: 150px; height:150px; background-color:#053742"></div>
-            <p class="lead mt-2 text-decoration-underline">Tanpa harus Walk-in</p>
+            <div style="width: 300px; min-height:180px;;">
+                <img src="/img/1.svg"  alt="" srcset="">
+            </div>
+            <p class="lead text-decoration-underline">Tanpa harus Walk-in</p>
             <p class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi, sapiente dicta eos nulla ex dolore nisi! Nam deleniti omnis assumenda!</p>
         </div>
         <div class="col-md-3 d-flex flex-column align-items-center">
-            <div style="width: 150px; height:150px; background-color:#053742"></div>
-            <p class="lead mt-2 text-decoration-underline">Menghindari Calo</p>
+            <div style="width: 300px; max-height:250px; ">
+                <img src="/img/2-01.svg"  alt="" srcset="">
+            </div>
+            <p class="lead text-decoration-underline">Menghindari Calo</p>
             <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, doloremque voluptas asperiores nulla tempore ratione. Voluptate hic incidunt accusamus eius.</p>
         </div>
         <div class="col-md-3 d-flex flex-column align-items-center">
-            <div style="width: 150px; height:150px; background-color:#053742"></div>
+            <div style="width: 300px; max-height:250px; ">
+                <img src="/img/3-02.svg"  alt="" srcset="">
+            </div>
             <p class="lead mt-2 text-decoration-underline">Tanpa Capek Antri</p>
             <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, aliquid quas vel ratione nulla quam aspernatur accusantium eligendi necessitatibus! Aliquid.</p>
         </div>
         <div class="col-md-3 d-flex flex-column align-items-center">
-            <div style="width: 150px; height:150px; background-color:#053742"></div>
+            <div style="width: 300px; max-height:250px;">
+                <img src="/img/4-03.svg"  alt="" srcset="">
+            </div>
             <p class="lead mt-2 text-decoration-underline">Jadwal Teorganisir</p>
             <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nihil, totam aliquid possimus beatae ipsa omnis expedita natus maiores ipsam.</p>
         </div>
@@ -42,7 +50,7 @@
 </div>
 <div id="syarat" class="container">
     <div class="row mt-5 mb-5 justify-content-center ">
-        <h1 class="text-center display-5">Syarat & Ketentuan</h1>
+        <h1 class="text-center display-5 fw-bold">Syarat & Ketentuan</h1>
         <hr class="w-50 mt-4">
         <ul>
             <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam, quod. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste error minima delectus earum numquam animi eligendi ex corrupti distinctio explicabo!</li>

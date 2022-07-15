@@ -69,6 +69,15 @@
                                 </div>
                             @enderror
                               </div>
+                              <div class="col-md-6">
+                                <label for="validationDefault01" class="form-label">Tanggal Lahir</label>
+                                <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" id="tanggal_lahir" value="{{ old('tanggal_lahir',$user->tanggal_lahir) }}" required>
+                              @error('tanggal_lahir')
+                                  <div class="invalid-feedback">
+                                      {{ $message }}
+                                  </div>
+                              @enderror
+                              </div>
                               <div class="col-12">
                                 <button class="btn btn-primary mb-5 mt-3" type="submit">Edit Data</button>
                               </div>

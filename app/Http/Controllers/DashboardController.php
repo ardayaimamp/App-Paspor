@@ -18,6 +18,18 @@ class DashboardController extends Controller
     public function index()
     {
 
+        $adminTerima = Pengajuan::where('status','diterima');
+        $adminTerima_count = Pengajuan::where('status','diterima');
+        $adminTerima_search = false;
+
+
+        if(request('tanggal_pengajuan')){
+           $adminTerima->where('tanggal_pengajuan', request('tanggal_pengajuan'))->orderBy('shift_id')->get();
+           $adminTerima_count->where('tanggal_pengajuan', request('tanggal_pengajuan'))->count();
+           $adminTerima_search = true;
+        }
+
+
         return view('dashboard/index',[
             'title'=>'Dashboard',
             'active'=>'dashboard',
@@ -32,8 +44,9 @@ class DashboardController extends Controller
             'userTolak' => Pengajuan::where('status','ditolak')->where('pemohon_id', auth()->user()->id)->get(),
             'userTolak_count' => Pengajuan::where('status','ditolak')->where('pemohon_id', auth()->user()->id)->count(),
             'userTerima' => Pengajuan::where('status','diterima')->where('pemohon_id', auth()->user()->id)->get(),
-            'adminTerima' => Pengajuan::where('status','diterima')->get(),
-            'adminTerima_count' => Pengajuan::where('status','diterima')->count(),
+            'adminTerima' => $adminTerima->get(),
+            'adminTerima_count' => $adminTerima_count->count(),
+            'adminTerima_search' => $adminTerima_search,
             'adminTolak' => Pengajuan::where('status','ditolak')->get(),
             'adminTolak_count' => Pengajuan::where('status','ditolak')->count(),
             'userTerima_count' => Pengajuan::where('status','diterima')->where('pemohon_id', auth()->user()->id)->count(),
@@ -69,7 +82,7 @@ class DashboardController extends Controller
      */
     public function show(Pengajuan $pengajuan)
     {
-
+       dd($pengajuan);
     }
 
     /**

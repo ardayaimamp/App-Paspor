@@ -40,7 +40,7 @@
                   </div>
                   <div class="form-floating">
                     <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" value="{{ old('tanggal_lahir') }}" id="tanggal_lahir" name="tanggal_lahir" placeholder="Jl.xxx">
-                    <label for="floatingInput">Alamat</label>
+                    <label for="floatingInput">Tanggal Lahir</label>
                     @error('tanggal_lahir')
                     <div class="invalid-feedback">
                         {{ $message }}

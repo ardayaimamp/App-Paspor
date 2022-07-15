@@ -58,20 +58,21 @@ class DashboardPengajuanController extends Controller
         $filterAkta = auth()->user()->akta_kelahiran;
 
         if(!$filterKTP){
-            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu KTP anda');
+            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu KTP anda')->withInput();
         }
         if(!$filterKK){
-            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu KK anda');
+            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu KK anda')->withInput();
         }
         if(!$filterAkta){
-            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu Akta Kelahiran anda');
+            return redirect('/dashboard/pengajuan')->with('toast_error','Tolong lengkapi dulu Akta Kelahiran anda')->withInput();
         }
         if($hitungNama >= 1){
-            return redirect('/dashboard/pengajuan')->with('toast_error','Anda sudah pernah melakukan pengajuan');
+            return redirect('/dashboard/pengajuan')->with('toast_error','Anda sudah pernah melakukan pengajuan')->withInput();
         }
-        if ($hitungBaris >= 10){
-            return redirect('/dashboard/pengajuan')->with('toast_error','Tanggal Sudah Melebihi Maksimal');
+        if ($hitungBaris >= 4){
+            return redirect('/dashboard/pengajuan')->with('toast_error','Tanggal Sudah Melebihi Maksimal')->withInput();
         }
+
         if($request->file('surat_kehilangan')){
             $validatedData['surat_kehilangan'] = $request->file('surat_kehilangan')->store('file_surat');
         }

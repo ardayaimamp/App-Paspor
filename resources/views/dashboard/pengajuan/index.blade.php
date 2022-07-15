@@ -10,7 +10,7 @@
             @csrf
             <div class="mb-3">
               <label for="tanggal_pengajuan" class="form-label">Tanggal Pengajuan</label>
-              <input type="date" class="form-control @error('tanggal_pengajuan') is-invalid @enderror" id="tanggal_pengajuan" name="tanggal_pengajuan" min="{{ $now->format('Y-m-d') }}">
+              <input type="date" class="form-control @error('tanggal_pengajuan') is-invalid @enderror" id="tanggal_pengajuan" value="{{ old('tanggal_pengajuan') }}" name="tanggal_pengajuan" min="{{ $now->format('Y-m-d') }}">
             </div>
             @error('tanggal_pengajuan')
             <div class="invalid-feedback">
@@ -31,7 +31,7 @@
               </div>
               @enderror
             <div class="form-floating">
-                <textarea class="form-control  @error('deskripsi') is-invalid @enderror" placeholder="Berikan deskripsi kehilangan..." id="deskripsi" name="deskripsi" style="height: 100px"></textarea>
+                <textarea class="form-control  @error('deskripsi') is-invalid @enderror" placeholder="Berikan deskripsi kehilangan..." id="deskripsi" name="deskripsi" style="height: 100px">{{ old('deskripsi') }}</textarea>
                 <label for="deskripsi">Deskripsi</label>
                 @error('deskripsi')
                 <div class="invalid-feedback">

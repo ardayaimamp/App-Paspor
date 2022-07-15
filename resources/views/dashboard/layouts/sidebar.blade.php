@@ -24,47 +24,52 @@
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>USER</span>
+            <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                <span class="fs-4">USER</span>
                 <a class="link-secondary" href="#" aria-label="Add a new report">
                   <span data-feather="plus-circle"></span>
                 </a>
-              </h6>
-          <ul class="nav flex-column">
+              </h4>
+          <ul class="nav flex-column mt-3">
             <li class="nav-item">
-              <a class="nav-link {{ $active === 'dashboard' ? 'active' : '' }}" aria-current="page" href="/dashboard">
+              <a class="nav-link {{ $active === 'dashboard' ? 'active' : '' }}" aria-current="page" href="/dashboard" style="font-size:20px">
                 <span data-feather="home"></span>
                 Dashboard
               </a>
             </li>
+            <hr>
             <li class="nav-item">
-              <a class="nav-link {{ $active === 'profil' ? 'active' : '' }}" href="/dashboard/profil">
+              <a class="nav-link {{ $active === 'profil' ? 'active' : '' }}" href="/dashboard/profil" style="font-size:20px">
                 <span data-feather="shopping-cart"></span>
                 Profil
               </a>
             </li>
+            <hr>
             @cannot('admin')
             <li class="nav-item">
-              <a class="nav-link {{ $active === 'pengajuan' ? 'active' : '' }}" href="/dashboard/pengajuan">
+              <a class="nav-link {{ $active === 'pengajuan' ? 'active' : '' }}" href="/dashboard/pengajuan" style="font-size:20px">
                 <span data-feather="users"></span>
                 Pengajuan
               </a>
             </li>
+            <hr>
             @endcannot
             @can('admin')
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>ADMINISTRATOR</span>
+                <span class="fs-5">ADMINISTRATOR</span>
                 <a class="link-secondary" href="#" aria-label="Add a new report">
                     <span data-feather="plus-circle"></span>
                 </a>
             </h6>
+            <hr>
             <ul class="nav flex-column mb-2">
                 <li class="nav-item">
-              <a class="nav-link {{ $active === 'listPemohon' ? 'active' : '' }}" href="/dashboard/listPemohon">
+              <a class="nav-link {{ $active === 'listPemohon' ? 'active' : '' }}" href="/dashboard/listPemohon" style="font-size:20px">
                 <span data-feather="file-text"></span>
                 List Pemohon
             </a>
         </li>
+        <hr>
     </ul>
     @endcan
 </div>
